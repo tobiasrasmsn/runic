@@ -12,7 +12,7 @@ export default function RoundedButton({ title, href, isCTA, className, ...props 
     return (
         <Button
             className={`${
-                isCTA ? "bg-[#003366]" : "bg-[#9bb3d3] border border-[#195778] hover:bg-[#295d92]/75"
+                isCTA ? "bg-[#003366]" : "bg-[#9bb3d3] border border-[#5d8dc9] hover:bg-[#295d92]/75"
             } rounded-full font-medium text-sm p-4 ${className}`}
             {...props}
             asChild
