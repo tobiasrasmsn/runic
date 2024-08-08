@@ -24,7 +24,7 @@ export default function CtaButton({ title, href, isCTA, className, onClick, ...p
         <Button
             className={`${
                 isCTA ? "bg-[#003366]" : "bg-slate-400"
-            } rounded-full font-medium text-sm p-4 ${className} hover:scale-105 hover:bg-blue-800 hover:border-blue-950 duration-300 transition`}
+            } rounded-full font-medium text-zinc-100/85 text-sm p-4 ${className} hover:scale-105 hover:bg-blue-800 hover:border-blue-950 duration-300 transition`}
             onClick={handleClick}
             {...props}
         >

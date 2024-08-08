@@ -17,7 +17,7 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en">
+        <html lang="en" suppressHydrationWarning>
             <body className={`${plus_jakarta_sans.className} bg-zinc-900`}>
                 <ThemeProvider defaultTheme="light" enableSystem attribute="class">
                     <Navigation />

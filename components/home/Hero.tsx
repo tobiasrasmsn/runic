@@ -37,7 +37,7 @@ export default function Hero() {
     return (
         <>
             <section className="bg-zinc-900 w-full h-[100dvh] min-h-[500px] px-0 pb-0 md:px-2 md:pb-2">
-                <div className="bg-gradient-to-tr from-[#D9D9D9] via-[#d8d7ea] to-[#8eabd0] relative w-full h-full flex flex-col items-center justify-center gap-1 rounded-b-[2rem] overflow-hidden">
+                <div className="bg-gradient-to-tr from-[#D9D9D9]  to-[#a4bad7] relative w-full h-full flex flex-col items-center justify-center gap-1 rounded-b-[2rem] overflow-hidden">
                     {/* <AnimatedGridPattern
                         numSquares={30}
                         maxOpacity={0.1}

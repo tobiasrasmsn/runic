@@ -5,79 +5,33 @@ import Link from "next/link";
 import { Button } from "../ui/button";
 
 export default function Navigation() {
-    const [scrolled, setScrolled] = useState(false);
-    const controls = useAnimation();
-    const isInitialMount = useRef(true);
-
-    useEffect(() => {
-        const handleScroll = () => {
-            if (isInitialMount.current) {
-                isInitialMount.current = false;
-                return;
-            }
-
-            if (window.scrollY > 350) {
-                setScrolled(true);
-            } else {
-                setScrolled(false);
-            }
-        };
-
-        window.addEventListener("scroll", handleScroll);
-        return () => {
-            window.removeEventListener("scroll", handleScroll);
-        };
-    }, []);
-
-    useEffect(() => {
-        if (!isInitialMount.current) {
-            if (scrolled) {
-                controls.start({
-                    position: "fixed",
-                    top: "10px",
-                    opacity: 1,
-                    y: 0,
-                    borderRadius: "1rem",
-                    transition: { duration: 0.3 },
-                });
-            } else {
-                controls
-                    .start({
-                        opacity: 0,
-                        y: -20,
-                        transition: { duration: 0.3 },
-                    })
-                    .then(() => {
-                        controls.start({
-                            position: "absolute",
-                            top: "10px",
-                            y: 0,
-                            opacity: 1,
-                            borderRadius: "0 0 1rem 1rem",
-                            transition: { duration: 0.5 },
-                        });
-                    });
-            }
-        }
-    }, [scrolled, controls]);
-
+    const [megaMenuOpen, setMegaMenuOpen] = useState(false);
     return (
-        <motion.header
-            className="w-full z-50 px-4 top-[10px]"
-            animate={controls}
-            initial={{
-                position: "absolute",
-                top: "10px",
-                width: "100%",
-                borderRadius: "0 0 1rem 1rem",
-                opacity: 1,
-                y: 0,
-            }}
-        >
-            <div className="w-full py-3 px-5 shadow-md shadow-zinc-700/[0.05] rounded-xl flex flex-row justify-between items-center bg-zinc-100/50 backdrop-blur-md">
+        <motion.header className="w-full z-50 px-4 top-[10px] fixed">
+            <div className="w-full text-zinc-900 py-3 h-16 px-5 shadow-md shadow-zinc-700/[0.05] rounded-xl flex flex-row justify-between items-center bg-zinc-100/50 backdrop-blur-md">
                 <h2>Runic</h2>
                 <nav>
-                    <ul className="flex flex-row items-center gap-4 text-sm">
+                    <div
+                        className="flex sm:hidden w-[30px] h-[30px] my-[4.34px] justify-center items-center gap-[5px] flex-col cursor-pointer"
+                        onClick={() => setMegaMenuOpen(!megaMenuOpen)}
+                    >
+                        <div
+                            className={`w-full h-[2px] bg-zinc-800 transition-transform duration-300 ${
+                                megaMenuOpen ? "rotate-45 translate-y-[7px]" : ""
+                            }`}
+                        ></div>
+                        <div
+                            className={`w-full h-[2px] bg-zinc-800 transition-opacity duration-300 ${
+                                megaMenuOpen ? "opacity-0" : ""
+                            }`}
+                        ></div>
+                        <div
+                            className={`w-full h-[2px] bg-zinc-800 transition-transform duration-300 ${
+                                megaMenuOpen ? "-rotate-45 -translate-y-[7px]" : ""
+                            }`}
+                        ></div>
+                    </div>
+                    <ul className="flex-row items-center gap-4 text-sm hidden sm:flex">
                         <li>
                             <Link href="/" className="hover:text-blue-600 transition-colors duration-200">
                                 Home
